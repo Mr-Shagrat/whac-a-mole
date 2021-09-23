@@ -91,11 +91,11 @@ h1 {
   flex: 0 1 562px;
   height: 683px;
   padding-bottom: 140px;
-  background: url("/assets/BG.jpg") center / cover;
+  background: url("./assets/BG.jpg") center / cover;
   box-shadow: -8px -8px 20px #2a333d, 10px 7px 20px #475462;
   border-radius: 30px;
   overflow: hidden;
-  cursor: url(/assets/game-cursor-default.cur) 32 32, auto;
+  cursor: url(./assets/game-cursor-default.cur) 32 32, auto;
   margin-bottom: 20px;
 }
 .board h3 {
@@ -125,7 +125,7 @@ h1 {
   overflow: hidden;
 }
 .cnt:active {
-  cursor: url(/assets/game-cursor-click.cur) 32 32, auto;
+  cursor: url(./assets/game-cursor-click.cur) 32 32, auto;
 }
 .cnt.kill > .enemy {
   top: 5%;
