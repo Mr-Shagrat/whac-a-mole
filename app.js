@@ -7,7 +7,7 @@ const board = document.querySelector('#board')
 const scoreTitle = document.querySelector('.score')
 const garden = document.querySelectorAll('.garden')
 const cnt = document.querySelectorAll('.cnt')
-const audio = new Audio('/assets/one-punch.mp3')
+const audio = new Audio('assets/one-punch.mp3')
 audio.volume = 0.05
 
 let clickItemId = 0
@@ -49,7 +49,6 @@ garden.forEach(garden => {
       if (clickItemId === e.target.id) {
         score--
       }
-      console.log(score)
       score++
       clickItemId = e.target.id
     }
