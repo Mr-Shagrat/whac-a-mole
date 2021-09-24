@@ -91,11 +91,11 @@ h1 {
   flex: 0 1 562px;
   height: 683px;
   padding-bottom: 140px;
-  background: url("assets/BG.jpg") center / cover;
+  background: url("assets/texture/background.jpg") center / cover;
   box-shadow: -8px -8px 20px #2a333d, 10px 7px 20px #475462;
   border-radius: 30px;
   overflow: hidden;
-  cursor: url(assets/game-cursor-default.cur) 32 32, auto;
+  cursor: url(assets/cursor/default.cur) 32 32, auto;
   margin-bottom: 20px;
 }
 .board h3 {
@@ -104,19 +104,21 @@ h1 {
   width: 100%;
 }
 
-.garden {
+.hole {
   position: absolute;
   bottom: -7px;
   max-width: 100%;
 }
-.enemy {
+
+.mole {
   position: absolute;
   display: block;
   max-width: 100%;
-  transition: top 0.8s ease-in-out 0s;
+  transition: top 0.5s cubic-bezier(0.1, -0.5, 0.2, 0) 0s;
   top: 100%;
 }
-.cnt {
+
+.item {
   height: 128px;
   position: relative;
   flex: 1 1 33.333%;
@@ -124,19 +126,15 @@ h1 {
   justify-content: center;
   overflow: hidden;
 }
-.cnt:active {
-  cursor: url(assets/game-cursor-click.cur) 32 32, auto;
+
+.item:active {
+  cursor: url(assets/cursor/click.cur) 32 32, auto;
 }
-.cnt.kill > .enemy {
+
+.item.visible > .mole {
   top: 5%;
 }
 
-.circle {
-  box-shadow: 0 0 2px #485563;
-  position: absolute;
-  border-radius: 50%;
-  cursor: pointer;
-}
 .gameover {
   position: absolute;
   z-index: 50;
@@ -160,6 +158,7 @@ h1 {
 .gameover.hide {
   display: none;
 }
+
 @media (max-width: 582px) {
   .board {
     height: 95vh;
@@ -172,6 +171,7 @@ h1 {
     line-height: 1.3;
     font-size: 3rem;
   }
+
   .time-list li {
     flex: 0 1 33.333%;
   }
@@ -182,17 +182,18 @@ h1 {
     line-height: 1.3;
     font-size: 2.2rem;
   }
+
   .time-btn {
     font-size: 1.2rem;
   }
 }
 @media (max-width: 375px) {
-  .cnt.kill > .enemy {
+  .item.visible > .mole {
     top: 12%;
   }
 }
 @media (max-width: 320px) {
-  .cnt.kill > .enemy {
+  .item.visible > .mole {
     top: 25%;
   }
 }

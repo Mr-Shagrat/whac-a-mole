@@ -5,12 +5,12 @@ const timeList = document.querySelector('#time-list')
 const timeEl = document.querySelector('#time')
 const board = document.querySelector('#board')
 const scoreTitle = document.querySelector('.score')
-const garden = document.querySelectorAll('.garden')
-const cnt = document.querySelectorAll('.cnt')
-const audio = new Audio('assets/one-punch.mp3')
+const hole = document.querySelectorAll('.hole')
+const item = document.querySelectorAll('.item')
+const audio = new Audio('assets/audio/click.mp3')
 audio.volume = 0.05
 
-let clickItemId = 0
+// let visibleMole = []
 let time = 0
 let score = 0
 let timer, createEnemyTimer, removeEnemyTimer = null
@@ -25,7 +25,7 @@ restartBtn.addEventListener('click', e => {
   screens[1].classList.remove('up')
   setTimeout(() => {
     scoreTitle.parentNode.classList.add('hide')
-    cnt.forEach(item => item.className = 'cnt')
+    item.forEach(item => item.className = 'item')
     score = 0
     timeEl.parentNode.classList.remove('hide')
   }, 0);
@@ -39,18 +39,14 @@ timeList.addEventListener('click', e => {
   }
 })
 
-garden.forEach(garden => {
-  garden.addEventListener('click', e => {
-    if (e.target.parentNode.className === 'cnt kill') {
+hole.forEach(item => {
+  item.addEventListener('click', e => {
+    if (e.target.parentNode.className === 'item visible') {
       e.stopPropagation()
       audio.play()
       removeMole(e.target.id)
-      createMole()
-      if (clickItemId === e.target.id) {
-        score--
-      }
+      setTimeout(createMole, 500)
       score++
-      clickItemId = e.target.id
     }
   })
 })
@@ -100,10 +96,18 @@ function getRandomNumber(min, max) {
 
 function createMole() {
   clickItemId = 0
-  const index = getRandomNumber(0, garden.length - 1)
-  cnt[index].classList.add('kill')
+  const index = getRandomNumber(0, hole.length - 1)
+  item[index].classList.add('visible')
+  // console.log(index)
+  // visibleMole.push(index)
+  // removeEnemyTimer = setInterval(removeMole, 5500)
+  // console.log(`add ${visibleMole[0]}`)
 }
 
-function removeMole(value) {
-  cnt[value].classList.remove('kill')
+function removeMole(value = visibleMole[0]) {
+  item[value].classList.remove('visible')
+  // visibleMole.shift()
+  // createMole()
+  // console.log(`remove ${visibleMole[0]}`)
+
 }
